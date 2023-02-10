@@ -52,11 +52,16 @@ Which exact do same thing, we passing the seocnd string to arraylist
 and then using a loop to store it to the result and then return the result.  
   <img src="22.jpg" width="700" />
 
+how the codeflow works, right from when you type in the URL to how the request is handled, what methods are called, how the path is handled, how we get the query parameters, what happens when we don't pass in parameters, what happens if we pass in an invalid url etc.
+
+We called the handleRequest method by passing the url as parameters, First we need to check if it contains "/", if it is not, or invalid, the method will return 404 not found. If it does contain "/add-message", the code splits the query part of the URI using the .split("=") method, which splits the string on the "=" character and returns an array of strings. The resulting array is stored in a variable named "parameters". Next, the code checks if the first element in the "parameters" array is equal to "s". If it is, the second element of the "parameters" array is added to an arraylist named "strings". Finally, the code iterates over the elements in the "strings" array and concatenates them into a single string, which is returned as the result of the method.
 
 
-  ## Part 2
 
-1.A failure-inducing input for the buggy program, as a JUnit test and any       associated code (write it as a code block in Markdown)
+
+## Part 2
+
+1.A failure-inducing input for the buggy program, as a JUnit test and any associated code (write it as a code block in Markdown)
 This will caused Junit error.
 
 ```
@@ -104,6 +109,11 @@ We shall get 54321 instead of 54345, it means the list is not reversed as we nee
         }
     }
 ```
+
+The issue is that in each iteration of the for loop, you are overwriting the value of the current element with the value of the last element, which will cause the original values to be lost. As a result, the final array will only contain the values of the last few elements in the original array, and will not be reversed. 
+This bug noticed me maybe I need to use temp value to store the original list, which similar to shallow copy list.
+
+
 
 ## Part 3
 In week 2 and week 3, we learn how to debug using Junit. From the artical  
